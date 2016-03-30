@@ -1,4 +1,3 @@
-
 var log = (function() {
     var parElt = document.getElementById('wrap'),
         logElt = document.createElement('div');
@@ -126,16 +125,12 @@ function capturePage(data, sender, callback) {
 function openPage() {
     // standard dataURI can be too big, let's blob instead
     // http://code.google.com/p/chromium/issues/detail?id=69227#c27
-
     var dataURI = screenshot.canvas.toDataURL();
-
     // convert base64 to raw binary data held in a string
     // doesn't handle URLEncoded DataURIs
     var byteString = atob(dataURI.split(',')[1]);
-
     // separate out the mime component
     var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-
     // write the bytes of the string to an ArrayBuffer
     var ab = new ArrayBuffer(byteString.length);
     var ia = new Uint8Array(ab);
